@@ -50,6 +50,11 @@ public class Game {
         }
 
         public String checkGuess(int guess){
+            if((Integer)guess == null){
+                guessResult = "Please enter the correct format";
+            }
+            else{
+            try{
             guessResult="";
             if(guess>getNumber()){
                 guessResult = "too high";
@@ -61,14 +66,24 @@ public class Game {
                 guessResult = "correct";
             }
             guesses++;
+            }
+            catch (Exception e){
+                System.out.println("Please enter a valid form of guess");
+            }
+            }
 //            System.out.println(guessResult);
 //            System.out.println("Guesses: "+guesses);
             return guessResult;
         }
 
         public void reset(int newNumber){
+            try{
             setNumber(newNumber);
             guesses = 0;
+            }
+            catch (Exception e){
+                System.out.println("Please enter a valid new number");
+            }
 
         }
 
